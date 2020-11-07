@@ -2,6 +2,7 @@
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ProfessionalWiki/mw-docker/build)](https://github.com/ProfessionalWiki/mw-docker/actions?query=workflow%3Abuild)
 [![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/prowiki/mediawiki)](https://hub.docker.com/r/prowiki/mediawiki)
+[![Docker Pulls](https://img.shields.io/docker/pulls/prowiki/mediawiki)](https://hub.docker.com/r/prowiki/mediawiki)
 
 This repo contains Dockerfiles to build MediaWiki Docker images.
 
