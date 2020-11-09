@@ -60,10 +60,14 @@ RUN set -eux; \
 		echo "  RewriteEngine On"; \
 		echo "  RewriteCond %{REQUEST_FILENAME} !-f"; \
 		echo "  RewriteCond %{REQUEST_FILENAME} !-d"; \
-		echo "  RewriteRule ^ %{DOCUMENT_ROOT}/index.php [L]"; \
+		echo "  RewriteRule ^/?wiki(/.*)?$ %{DOCUMENT_ROOT}/w/index.php [L]"; \
+		echo "  RewriteRule ^/*$ %{DOCUMENT_ROOT}/w/index.php [L]"; \
 		echo "</Directory>"; \
 	} > "$APACHE_CONFDIR/conf-available/short-url.conf"; \
 	a2enconf short-url
+
+RUN ln -s /var/www/html/ /var/www/html/w
+
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
