@@ -25,6 +25,12 @@ This repo contains Dockerfiles to build MediaWiki Docker images.
 	</tr>
 </table>
 
+## Differences with official MediaWiki images
+
+* Latest PHP
+* Luasandbox
+* Extra packages
+
 ## Other MediaWiki images
 
 For the official MediaWiki Docker images maintained by The Wikimedia Foundation, see https://github.com/wikimedia/mediawiki-docker
