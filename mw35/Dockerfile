@@ -1,4 +1,4 @@
-FROM php:7.4-apache as mw
+FROM php:7.4-apache as base-mw
 # PHP 7.4 version of https://github.com/wikimedia/mediawiki-docker/blob/master/1.35/apache/Dockerfile
 
 # System dependencies
@@ -8,6 +8,7 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		cron \
 		git \
+		vim \
 		libbz2-dev=1.* gettext-base=0.19.* \
 		zip unzip libzip-dev \
 		# Added for PHP 7.4
@@ -80,14 +81,13 @@ RUN set -eux; \
 		echo "  RewriteEngine On"; \
 		echo "  RewriteCond %{REQUEST_FILENAME} !-f"; \
 		echo "  RewriteCond %{REQUEST_FILENAME} !-d"; \
-		echo "  RewriteRule ^/?wiki(/.*)?$ %{DOCUMENT_ROOT}/w/index.php [L]"; \
-		echo "  RewriteRule ^/*$ %{DOCUMENT_ROOT}/w/index.php [L]"; \
+		echo "  RewriteRule ^ %{DOCUMENT_ROOT}/index.php [L]"; \
 		echo "</Directory>"; \
 	} > "$APACHE_CONFDIR/conf-available/short-url.conf"; \
 	a2enconf short-url
 
-RUN ln -s /var/www/html/ /var/www/html/w
-
+# Enable AllowEncodedSlashes for VisualEditor
+RUN sed -i "s/<\/VirtualHost>/\tAllowEncodedSlashes NoDecode\n<\/VirtualHost>/" "$APACHE_CONFDIR/sites-available/000-default.conf"
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
@@ -134,5 +134,17 @@ RUN set -eux; \
 	\
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $fetchDeps; \
 	rm -rf /var/lib/apt/lists/*
+
+CMD ["apache2-foreground"]
+
+
+
+
+FROM base-mw as pro-mw
+
+COPY htaccess /var/www/html/.htaccess
+RUN ln -s /var/www/html/ /var/www/html/w
+
+
 
 CMD ["apache2-foreground"]

@@ -8,12 +8,13 @@ on:
 
 jobs:
 
-  build:
+  mw35:
 
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: v35-php74
-        run: docker build -f Dockerfile-35-php74 .
+      - run: make build
+      - run: make container
+      - run: bash test.sh
