@@ -1,39 +1,20 @@
-FROM php:7.4-apache as base-mw
 # PHP 7.4 version of https://github.com/wikimedia/mediawiki-docker/blob/master/1.35/apache/Dockerfile
+FROM php:7.4-apache as base-mw
 
 # System dependencies
 RUN set -eux; \
 	\
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
-		cron \
 		git \
-		vim \
-		libbz2-dev=1.* gettext-base=0.19.* \
-		zip unzip libzip-dev \
-		# Added for PHP 7.4
-		libonig-dev \
-		# Added for image thumbnailing
-		imagemagick \
-		# Added for SVG handling
 		librsvg2-bin \
-		# Required for PDFHandler
-		ghostscript \
-		xpdf-utils \
+		imagemagick \
 		# Required for SyntaxHighlighting
 		python3 \
-		# Required for Scribunto
-		liblua5.1-0-dev \
+		# Added for PHP 7.4
+		libonig-dev \
 	; \
 	rm -rf /var/lib/apt/lists/*
-
-# Install the PHP luasendbox extension we need for Scribunto
-RUN docker-php-source extract && \
-        \
-	git clone https://gerrit.wikimedia.org/r/mediawiki/php/luasandbox.git /usr/local/src/luasandbox && \
-	docker-php-ext-configure /usr/local/src/luasandbox && \
-	docker-php-ext-install /usr/local/src/luasandbox && \
-	rm -rf /usr/local/src/luasandbox
 
 # Install the PHP extensions we need
 RUN set -eux; \
@@ -50,8 +31,6 @@ RUN set -eux; \
 		mbstring \
 		mysqli \
 		opcache \
-		calendar \
-		bz2 \
 	; \
 	\
 	pecl install APCu-5.1.19; \
@@ -140,11 +119,37 @@ CMD ["apache2-foreground"]
 
 
 
+
+# Professional Wiki version of base MediaWiki
 FROM base-mw as pro-mw
+
+RUN set -eux; \
+	\
+	apt-get update; \
+	apt-get install -y --no-install-recommends \
+		cron \
+		vim \
+		libbz2-dev=1.* gettext-base=0.19.* \
+		zip unzip libzip-dev \
+		# Required for PDFHandler
+		ghostscript \
+		xpdf-utils \
+		# Required for Scribunto
+		liblua5.1-0-dev \
+	; \
+	docker-php-ext-install -j "$(nproc)" calendar bz2 \
+	; \
+	rm -rf /var/lib/apt/lists/*
+
+# Install the PHP luasendbox extension we need for Scribunto
+RUN docker-php-source extract && \
+        \
+	git clone https://gerrit.wikimedia.org/r/mediawiki/php/luasandbox.git /usr/local/src/luasandbox && \
+	docker-php-ext-configure /usr/local/src/luasandbox && \
+	docker-php-ext-install /usr/local/src/luasandbox && \
+	rm -rf /usr/local/src/luasandbox
 
 COPY htaccess /var/www/html/.htaccess
 RUN ln -s /var/www/html/ /var/www/html/w
-
-
 
 CMD ["apache2-foreground"]
