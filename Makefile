@@ -1,7 +1,7 @@
 .PHONY: build bash test container test-script uninstall logs
 
 build:
-	docker build mw$(version) --target pro-mw -t prowiki/mediawiki:latest -t prowiki/mediawiki:$(version) -t local-mw$(version)
+	docker build mw$(version) --target pro-mw -t prowiki/mediawiki:$(version) -t local-mw$(version)
 
 bash:
 	docker exec -it temp-mw bash
