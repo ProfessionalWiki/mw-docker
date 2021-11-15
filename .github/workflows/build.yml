@@ -18,7 +18,7 @@ jobs:
       - run: make version=35 build
       - run: make version=35 container
       - run: bash test.sh
-      - run: docker tag prowiki/mediawiki:35 prowiki/mediawiki:latest
+#      - run: docker tag prowiki/mediawiki:35 prowiki/mediawiki:latest
 
 
   mw37:
