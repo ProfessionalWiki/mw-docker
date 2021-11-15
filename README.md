@@ -16,6 +16,10 @@ This repo contains Dockerfiles to build MediaWiki Docker images.
 		<th>Description</th>
 	</tr>
 	<tr>
+		<td><a href="https://hub.docker.com/repository/docker/prowiki/mediawiki/tags?page=1&name=37">37</a></td>
+		<td>MediaWiki 1.37.x, PHP 8.0.x, MySQL, Apache</td>
+	</tr>
+	<tr>
 		<td><a href="https://hub.docker.com/repository/docker/prowiki/mediawiki/tags?page=1&name=35">35</a></td>
 		<td>MediaWiki 1.35.x, PHP 7.4.x, MySQL, Apache</td>
 	</tr>

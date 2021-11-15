@@ -9,7 +9,7 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		cron \
 		vim \
-		libbz2-dev=1.* gettext-base=0.19.* \
+		libbz2-dev=1.* gettext-base \
 		zip unzip libzip-dev \
 		# Required for PDFHandler
 		ghostscript \

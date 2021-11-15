@@ -15,6 +15,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: make build
-      - run: make container
+      - run: make version=35 build
+      - run: make version=35 container
+      - run: bash test.sh
+
+
+  mw37:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: make version=37 build
+      - run: make version=37 container
       - run: bash test.sh
