@@ -1,19 +1,19 @@
 .PHONY: build bash test container test-script uninstall logs
 
 build:
-	docker build mw$(version) --target pro-mw -t prowiki/mediawiki:$(version) -t local-mw$(version)
+	docker build mw$(version) --target pro-mw -t prowiki/mediawiki:$(version) -t local-mw:$(version)
 
 bash:
 	docker exec -it temp-mw bash
 
 test:
 	$(MAKE) uninstall || true
-	$(MAKE) container
+	$(MAKE) version=$(version) container
 	$(MAKE) test-script || true
 	$(MAKE) uninstall
 
 container:
-	docker run --name temp-mw -p 127.0.0.1:80:80 -d local-mw$(version)
+	docker run --name temp-mw -p 127.0.0.1:80:80 -d local-mw:$(version)
 	docker cp setup.sh temp-mw:/var/www/html/setup.sh
 	docker exec temp-mw bash /var/www/html/setup.sh
 
@@ -25,3 +25,13 @@ uninstall:
 
 logs:
 	docker logs temp-mwo
+
+
+
+build-and-publish:
+	$(MAKE) version=35 build
+	$(MAKE) version=35 test
+	$(MAKE) version=37 build
+	$(MAKE) version=37 test
+	docker push prowiki/mediawiki:35
+	docker push prowiki/mediawiki:37
