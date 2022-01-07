@@ -13,7 +13,7 @@ test:
 	$(MAKE) uninstall
 
 container:
-	docker run --name temp-mw -p 127.0.0.1:80:80 -d local-mw:$(version)
+	docker run --name temp-mw -d local-mw:$(version)
 	docker cp setup.sh temp-mw:/var/www/html/setup.sh
 	docker exec temp-mw bash /var/www/html/setup.sh
 
