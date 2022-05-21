@@ -30,9 +30,10 @@ RUN set -eux; \
 		mbstring \
 		mysqli \
 		opcache \
+		calendar \
 	; \
 	\
-	pecl install APCu-5.1.20; \
+	pecl install APCu-5.1.21; \
 	docker-php-ext-enable \
 		apcu \
 	; \
