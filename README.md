@@ -1,6 +1,6 @@
 # MediaWiki Docker images
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ProfessionalWiki/mw-docker/Docker%20Build)](https://github.com/ProfessionalWiki/mw-docker/actions?query=workflow%3A"Docker+Build")
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ProfessionalWiki/mw-docker/build.yml?branch=master)](https://github.com/ProfessionalWiki/mw-docker/actions?query=workflow%3A"Docker+Build")
 [![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/prowiki/mediawiki)](https://hub.docker.com/r/prowiki/mediawiki)
 [![Docker Pulls](https://img.shields.io/docker/pulls/prowiki/mediawiki)](https://hub.docker.com/r/prowiki/mediawiki)
 
