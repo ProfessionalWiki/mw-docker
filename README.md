@@ -31,7 +31,7 @@ We also provide [fully managed MediaWiki hosting](https://www.pro.wiki/). Start 
 	<tr>
 		<td><a href="https://hub.docker.com/repository/docker/prowiki/mediawiki/tags?page=1&name=35">35</a></td>
 		<td>MediaWiki 1.35.x, PHP 7.4.x, MySQL, Apache</td>
-        <td>1.35.8</td>
+        <td>1.35.9</td>
 	</tr>
 </table>
 
