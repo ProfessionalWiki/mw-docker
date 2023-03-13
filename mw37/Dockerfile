@@ -33,7 +33,7 @@ RUN set -eux; \
 		calendar \
 	; \
 	\
-	pecl install APCu-5.1.21; \
+	pecl install APCu-5.1.22; \
 	docker-php-ext-enable \
 		apcu \
 	; \
