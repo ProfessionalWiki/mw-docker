@@ -6,11 +6,13 @@
 
 This repo contains Dockerfiles to build MediaWiki Docker images.
 
-We also provide [fully managed MediaWiki hosting](https://www.pro.wiki/). Start your free trial today.
+This repository is maintained by [Professional.Wiki](https://professional.wiki/). We provide professional
+[MediaWiki hosting](https://www.pro.wiki/)
+and [MediaWiki software development](https://professional.wiki/en/mediawiki-development).
 
 ## [prowiki/mediawiki](https://hub.docker.com/r/prowiki/mediawiki)
 
-	docker pull prowiki/mediawiki:37
+	docker pull prowiki/mediawiki:39
 
 <table>
 	<tr>
