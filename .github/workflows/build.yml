@@ -18,7 +18,6 @@ jobs:
       - run: make version=35 build
       - run: make version=35 container
       - run: bash test.sh
-#      - run: docker tag prowiki/mediawiki:35 prowiki/mediawiki:latest
 
 
   mw37:
@@ -30,4 +29,16 @@ jobs:
 
       - run: make version=37 build
       - run: make version=37 container
+      - run: bash test.sh
+
+
+  mw39:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: make version=39 build
+      - run: make version=39 container
       - run: bash test.sh
