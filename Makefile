@@ -29,13 +29,15 @@ logs:
 
 
 build-and-publish:
+	$(MAKE) version=39 build
+	$(MAKE) version=39 test
+	docker push prowiki/mediawiki:39
+	$(MAKE) version=35 build
+	$(MAKE) version=35 test
+	docker push prowiki/mediawiki:35
 	$(MAKE) version=37 build
 	$(MAKE) version=37 test
 	docker push prowiki/mediawiki:37
 	$(MAKE) version=37php74 build
 	$(MAKE) version=37php74 test
 	docker push prowiki/mediawiki:37php74
-	$(MAKE) version=35 build
-	$(MAKE) version=35 test
-	docker push prowiki/mediawiki:35
-

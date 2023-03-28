@@ -1,4 +1,7 @@
-# Copy of https://github.com/wikimedia/mediawiki-docker/edit/master/1.36/apache/Dockerfile with PHP and MW versions changed
+# Copy of https://github.com/wikimedia/mediawiki-docker/edit/master/1.39/apache/Dockerfile
+# Copied to isolate from breaking changed made upstream, such as the PHP version change in the MediaWiki 35 image.
+# Also changed:
+# - Newer version of APCu
 FROM php:8.1-apache as mw39
 
 # System dependencies
@@ -116,6 +119,8 @@ RUN set -eux; \
 	rm -rf /var/lib/apt/lists/*
 
 CMD ["apache2-foreground"]
+
+
 
 
 # Professional Wiki version of base MediaWiki

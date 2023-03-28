@@ -10,6 +10,8 @@ This repository is maintained by [Professional.Wiki](https://professional.wiki/)
 [MediaWiki hosting](https://www.pro.wiki/)
 and [MediaWiki software development](https://professional.wiki/en/mediawiki-development).
 
+The Docker images are provided as-is, without any warranty or guarantees.
+
 ## [prowiki/mediawiki](https://hub.docker.com/r/prowiki/mediawiki)
 
 	docker pull prowiki/mediawiki:39
@@ -47,8 +49,8 @@ and [MediaWiki software development](https://professional.wiki/en/mediawiki-deve
 * Latest PHP
 * Luasandbox
 * Extra packages
+* A guarantee that we will not [switch PHP versions and break your MediaWiki extensions](https://github.com/wikimedia/mediawiki-docker/pull/117)
 
 ## Other MediaWiki images
 
 For the official MediaWiki Docker images maintained by The Wikimedia Foundation, see https://github.com/wikimedia/mediawiki-docker
-
