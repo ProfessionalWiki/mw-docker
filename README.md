@@ -25,7 +25,7 @@ The Docker images are provided as-is, without any warranty or guarantees.
 	<tr>
 		<td><a href="https://hub.docker.com/repository/docker/prowiki/mediawiki/tags?page=1&name=39">39</a></td>
 		<td>MediaWiki 1.39.x, PHP 8.1.x, MySQL, Apache</td>
-		<td>1.39.6 (2023-12-21)</td>
+		<td>1.39.10 (2024-10-01)</td>
 	</tr>
 	<tr>
 		<td><a href="https://hub.docker.com/repository/docker/prowiki/mediawiki/tags?page=1&name=37">37</a></td>

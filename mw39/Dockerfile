@@ -36,7 +36,7 @@ RUN set -eux; \
 		calendar \
 	; \
 	\
-	pecl install APCu-5.1.22; \
+	pecl install APCu-5.1.24; \
 	docker-php-ext-enable \
 		apcu \
 	; \
@@ -88,7 +88,7 @@ RUN set -eux; \
 
 # Version
 ENV MEDIAWIKI_MAJOR_VERSION 1.39
-ENV MEDIAWIKI_VERSION 1.39.6
+ENV MEDIAWIKI_VERSION 1.39.10
 
 # MediaWiki setup
 RUN set -eux; \
